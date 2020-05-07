@@ -15,13 +15,9 @@ function getAndRenderAllSongs() {
   songOutputContainer.innerHTML = ""
   apiManager.getAllSongs().then(songs => {
     songs.sort(sortAZ).map(songToHTML).forEach(renderToDOM)
-
-    const deleteBtns = document.querySelectorAll(".delete_btn")
-    deleteBtns.forEach(button => button.addEventListener("click", (event) => {
-      console.log("Song Id:", event.target.id)
-    }))
   })
 }
+
 
 // get and render all songs on initial page load
 getAndRenderAllSongs()
@@ -35,7 +31,6 @@ function songToHTML(song) {
   <h2>${song.title}</h2>
   <h3>by: ${song.artist}</h3>
   <p>released: ${song.yearReleased}</p>
-  <button id="delete--${song.id}" class="delete_btn">delete</button>
   </div>
   `
 }
@@ -52,33 +47,20 @@ function sortAZ(a, b) {
 
 
 
-// TODO: add delete button to HTML representation with ID
-// TODO: add click event listeners to all delete buttons
-
-
+// TODO: add delete button to HTML representation with song Id and delete_btn class
+// test
+// TODO: add click event listener to songs_container to listen for delete buttons
+// test
+// TODO: get song Id from button
+// test
 // TODO: add delete method to API module
+// test
+// TODO: call delete method in event listener and pass in song Id as argument
+// test
+// TODO: get all songs and re-render
+// test
 
-
-
-// TODO: add delete button to HTML representation
-// <button id="delete--${song.id}">delete</button>
-
-// TODO: add delete method to API
-// deleteSong(songId) {
-//   return fetch(`${apiURL}/${songId}`, {
-//     method: "DELETE"
-//   })
-// }
-
-// TODO: add click event listeners to all delete buttons to delete song
-// function addEventListenersToDeleteBtns() {
-//   const deleteBtns = document.querySelectorAll("button")
-//   deleteBtns.forEach(button => button.addEventListener("click", deleteSong))
-// }
-
-// TODO: get the ID off the button that was clicked and delete that ID from API
-// function deleteSong(event) {
-//   const songId = event.target.id.split("--")[1]
-//   apiManager.deleteSong(songId)
-//     .then(getAndRenderAllSongs)
-// }
+// TODO: show page with css
+// test
+// TODO: refactor add event listeners and delete/rerender into separate functions
+// test
